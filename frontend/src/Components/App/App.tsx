@@ -1,14 +1,14 @@
 import './App.css'
 import Navigation from "../Navigation/Navigation";
 
-import logo from "../../Images/logo.svg"
+const logo = require('../../Images/logo.png')
 
 const App = () => {
     return (
         <div className="app">
             <div className="left__column">
                 <div className="credentials">
-                    <img src={logo} alt="logo" />
+                    <img src={logo} className='logo'/>
                 </div>
 
                 <div className="navigation">
@@ -18,11 +18,11 @@ const App = () => {
 
             <div className="right__column">
                 <div className="tab__name">
-                    Tab name
+                    какая-то инфа по работе счетчиков
                 </div>
 
                 <div className="plot__area">
-                    Plot area
+                    тут графики
                 </div>
             </div>
 
