@@ -1,0 +1,41 @@
+body{
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.app{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left__column{
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    background: linear-gradient(#262250, #1B1942, #17163B);
+}
+
+.right__column{
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    background: radial-gradient(#201D47, #17153A);
+}
+
+.credentials{
+    color: aliceblue;
+}
+
+.tab__name{
+    color: aliceblue;
+}
+
+.navigation{
+    color: aliceblue;
+}
+
+.plot__area{
+    color: aliceblue;
+}
