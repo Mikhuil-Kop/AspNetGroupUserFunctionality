@@ -1,10 +1,13 @@
-import './App.css'
+import './App.css';
 import Navigation from "../Navigation/Navigation";
-import PlotArea from "../PlotArea/PlotArea"
+import { useAppSelector } from '../..';
+import Content from '../../Content/Content';
 
 const logo = require('../../Images/logo.png')
 
 const App = () => {
+    let selectedRoute = useAppSelector(state => state.route);
+
     return (
         <div className="app">
             <div className="left__column">
@@ -21,10 +24,9 @@ const App = () => {
                 <div className="tab__name">
                     какая-то инфа по работе счетчиков
                 </div>
-
-                <div className="plot__area">
-                    <PlotArea />
-                </div>
+                
+                <Content currRoute={selectedRoute} />
+                
             </div>
 
         </div>

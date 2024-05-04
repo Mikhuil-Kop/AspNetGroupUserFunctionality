@@ -5,12 +5,14 @@ import App from './Components/App/App';
 import plotTypeReducer from './Redux/plotType/plotTypeReducer';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit"
+import routeReducer from './Redux/route/routeReducer';
 
 
 export const storage = configureStore(
   {
     reducer: {
       plotType: plotTypeReducer,
+      route: routeReducer
     }
   }
 );
@@ -24,7 +26,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={storage}>
-    <App/>
+    <App key={document.location.href} />
   </Provider>
 
 );
