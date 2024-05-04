@@ -1,9 +1,10 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material"
-import "./PlotArea.css"
-import React, { useEffect, useState } from "react";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import "./PlotArea.css";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../..";
 import { plotTypeActions } from "../../Redux/plotType/plotTypeActions";
 import { plotTypes } from "../../Redux/plotType/plotTypeConstants";
+import CustomPlot from "../CustomPlot/CustomPlot";
 
 const textColor = process.env.REACT_APP_SELECT_PLOT_SWITCH_COLOR === undefined
         ? '#B1AFCD'
@@ -80,7 +81,7 @@ const PlotArea = () => {
             </div>
 
             <div className="plot__holder">
-
+                <CustomPlot />
             </div>
         </div>
     );

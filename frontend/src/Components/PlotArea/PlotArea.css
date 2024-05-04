@@ -7,3 +7,10 @@
     width: 30%;
     padding-left: 3%;
 }
+
+.plot__holder{
+    justify-self: center;
+    border-radius: 5%;
+    border-style: none;
+    overflow: hidden;
+}
