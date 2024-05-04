@@ -1,0 +1,9 @@
+.wrapper{
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+}
+
+.select__holder{
+    width: 30%;
+    padding-left: 3%;
+}

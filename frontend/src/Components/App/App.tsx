@@ -1,5 +1,6 @@
 import './App.css'
 import Navigation from "../Navigation/Navigation";
+import PlotArea from "../PlotArea/PlotArea"
 
 const logo = require('../../Images/logo.png')
 
@@ -22,7 +23,7 @@ const App = () => {
                 </div>
 
                 <div className="plot__area">
-                    тут графики
+                    <PlotArea />
                 </div>
             </div>
 
