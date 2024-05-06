@@ -15,6 +15,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import SsidChartRoundedIcon from '@mui/icons-material/SsidChartRounded';
 import PlayCircleFilledWhiteRoundedIcon from '@mui/icons-material/PlayCircleFilledWhiteRounded';
 import DisplaySettingsRoundedIcon from '@mui/icons-material/DisplaySettingsRounded';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import { useEffect, useState } from "react";
 import { route } from '../../Redux/route/routeConstants';
 import { useAppDispatch, useAppSelector } from '../..';
@@ -38,11 +39,11 @@ const useRouteMatch = (patterns: readonly string[]) => {
 const Router = (props: { children?: React.ReactNode }) => {
     const { children } = props;
     if (typeof window === 'undefined') {
-        return <StaticRouter location={routes.launchSimulation}>{children}</StaticRouter>;
+        return <StaticRouter location={routes.home}>{children}</StaticRouter>;
     }
 
     return (
-        <MemoryRouter initialEntries={[routes.launchSimulation]} initialIndex={0}>
+        <MemoryRouter initialEntries={[routes.home]} initialIndex={0}>
             {children}
         </MemoryRouter>
     );
@@ -58,18 +59,13 @@ const CurrentRoute = () => {
   }
 
 const CustomTabs = () => {
-    // You need to provide the routes in descendant order.
-    // This means that if you have nested routes like:
-    // users, users/new, users/edit.
-    // Then the order should be ['users/add', 'users/edit', 'users'].
-    const routeMatch = useRouteMatch([routes.launchSimulation, routes.monitoring, routes.states]);
-    const currentTab = routeMatch?.pattern?.path;
+    const routeMatch = useRouteMatch([routes.home, routes.launchSimulation, routes.monitoring, routes.states]);
 
     const textColor = process.env.REACT_APP_NAVIGATION_TAB_COLOR === undefined
         ? '#53B9EA'
         : `#${process.env.REACT_APP_NAVIGATION_TAB_COLOR}`;
 
-    const [tabState, setTabState] = useState(routes.launchSimulation);
+    const [tabState, setTabState] = useState(routes.home);
 
     const handleTabs = (value: string) => {
         setTabState(value);
@@ -103,6 +99,16 @@ const CustomTabs = () => {
             value={tabState}
             >
             <Tab 
+                icon={<HomeRoundedIcon color="secondary"/>}
+                iconPosition="start"
+                value={routes.home}
+                label={
+                    <NavigationButton color={textColor} label="Домашняя страница"/>
+                }
+                to={routes.home}
+                component={Link}
+            />
+            <Tab 
                 icon={<PlayCircleFilledWhiteRoundedIcon color="secondary"/>}
                 iconPosition="start"
                 value={routes.launchSimulation}
@@ -110,7 +116,7 @@ const CustomTabs = () => {
                     <NavigationButton color={textColor} label="Запуск нагрузки"/>
                 }
                 to={routes.launchSimulation}
-                component={Link} 
+                component={Link}
                 />
             <Tab 
                 icon={<SsidChartRoundedIcon color="secondary" />}
@@ -141,6 +147,7 @@ const Navigation = () => {
         <Router>
             <Routes>
                 <Route path="*" element={<CurrentRoute />} />
+                <Route path={routes.home} element={<CurrentRoute />} />
                 <Route path={routes.launchSimulation} element={<CurrentRoute />} />
                 <Route path={routes.monitoring} element={<CurrentRoute />} />
                 <Route path={routes.states} element={<CurrentRoute />} />

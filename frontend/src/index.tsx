@@ -26,6 +26,5 @@ root.render(
   <Provider store={storage}>
     <App />
   </Provider>
-
 );
 

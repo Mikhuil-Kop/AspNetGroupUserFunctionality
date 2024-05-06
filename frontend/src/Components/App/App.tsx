@@ -1,7 +1,8 @@
 import './App.css';
 import Navigation from "../Navigation/Navigation";
-import { useAppSelector } from '../..';
-import Content from '../../Content/Content';
+import { useAppDispatch, useAppSelector } from '../..';
+import Content from '../Content/Content';
+import { routeActions } from '../../Redux/route/routeActions';
 
 const logo = require('../../Images/logo.png')
 
@@ -12,7 +13,9 @@ const App = () => {
         <div className="app">
             <div className="left__column">
                 <div className="credentials">
-                    <img src={logo} className='logo'/>
+                    <a href="https://otus.ru/lessons/asp-net/">
+                        <img src={logo} className='logo' />
+                    </a>
                 </div>
 
                 <div className="navigation">

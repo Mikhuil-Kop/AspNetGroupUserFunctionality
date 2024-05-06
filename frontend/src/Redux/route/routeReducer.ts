@@ -11,7 +11,7 @@ export type Action = {
 }
 
 export const initState: State = {
-    route: route.launchSimulation
+    route: route.home
 };
 
 export default (state: State = initState, action: Action): any => {
