@@ -1,0 +1,14 @@
+.home__page{
+    justify-self: center;
+    margin-top: 10%;
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+}
+
+.intro{
+    color: #53B9EA;
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-bottom: 10%;
+    text-align: center;
+}
