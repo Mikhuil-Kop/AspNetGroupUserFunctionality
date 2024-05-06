@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
 import App from './Components/App/App';
 import plotTypeReducer from './Redux/plotType/plotTypeReducer';
 import { Provider, useDispatch, useSelector } from 'react-redux';
@@ -26,7 +25,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={storage}>
-    <App key={document.location.href} />
+    <App />
   </Provider>
 
 );

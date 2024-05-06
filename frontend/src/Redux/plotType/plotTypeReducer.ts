@@ -20,8 +20,9 @@ export default (state: State = initState, action: Action): any => {
             if (!action.payload)
                 return { ...state};
             else{
-                if (action.payload?.newPlotType)
-                    return { plotType: action.payload.newPlotType };
+                if (action.payload?.newPlotType){
+                    return { ...state, plotType: action.payload.newPlotType };
+                }
                 else
                     return { ...state};
             }

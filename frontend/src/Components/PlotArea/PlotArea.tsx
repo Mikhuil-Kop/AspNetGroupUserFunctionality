@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../..";
 import { plotTypeActions } from "../../Redux/plotType/plotTypeActions";
 import { plotTypes } from "../../Redux/plotType/plotTypeConstants";
 import CustomPlot from "../CustomPlot/CustomPlot";
+import { State } from "../../Redux/plotType/plotTypeReducer";
 
 const textColor = process.env.REACT_APP_SELECT_PLOT_SWITCH_COLOR === undefined
         ? '#B1AFCD'
@@ -22,39 +23,18 @@ const defaultSx = {
       }
 };
 
-// ToDo: поменять, когда определимся с типами графиков
-const plotValue_plotName = new Map([
-    [0, plotTypes.choose],
-    [1, plotTypes.f],
-    [2, plotTypes.g],
-    [3, plotTypes.h]
-]);
-
 const PlotArea = () => {
-    const [dependancy, setDependancy] = useState<number>(0);
-
     const dispatch = useAppDispatch();
-    let plotType = useAppSelector(state => state.plotType);
+    let state: State = useAppSelector(state => state.plotType);
 
-    const changePlotType = () => {
+    const changePlotType = (type: string) => {
         dispatch({ 
             type: plotTypeActions.CHANGE,
             payload: { 
-                newPlotType: plotValue_plotName.get(dependancy)
+                newPlotType: type
             } 
         });
     }
-
-    const handleChange = (value: number) => {
-        setDependancy(value);
-    }
-
-    // Т.к. useState асинхронный, этот хук нужен, чтобы глобальный
-    // стейт устанавливался точно после срабатывания setDependancy()
-    useEffect(() => {
-        changePlotType();
-    }, [dependancy]);
-
 
     return (
         <div className="wrapper">
@@ -67,15 +47,15 @@ const PlotArea = () => {
                     Тип зависимости
                 </InputLabel>
                 <Select
-                    value={dependancy}
+                    value={state.plotType}
                     label="Тип зависимости"
                     sx={defaultSx}
-                    onChange={(event) => { handleChange(event.target.value as number); }}
+                    onChange={(event) => { changePlotType(event.target.value) }}
                 >
-                    <MenuItem value={0}>Выберете тип зависимости</MenuItem>
-                    <MenuItem value={1}>f(x)</MenuItem>
-                    <MenuItem value={2}>g(x)</MenuItem>
-                    <MenuItem value={3}>h(x)</MenuItem>
+                    <MenuItem value={plotTypes.choose}>Выберете тип зависимости</MenuItem>
+                    <MenuItem value={plotTypes.f}>f(x)</MenuItem>
+                    <MenuItem value={plotTypes.g}>g(x)</MenuItem>
+                    <MenuItem value={plotTypes.h}>h(x)</MenuItem>
                 </Select>
             </FormControl>
             </div>

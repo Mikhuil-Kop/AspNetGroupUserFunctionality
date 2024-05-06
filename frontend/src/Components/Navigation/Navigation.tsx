@@ -25,8 +25,7 @@ const routes = route;
 const useRouteMatch = (patterns: readonly string[]) => {
     const { pathname } = useLocation();
 
-    for (let i = 0; i < patterns.length; i += 1) {
-        const pattern = patterns[i];
+    for (let pattern in patterns) {
         const possibleMatch = matchPath(pattern, pathname);
         if (possibleMatch !== null) {
         return possibleMatch;
@@ -54,7 +53,6 @@ const CurrentRoute = () => {
   
     return (
       <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
-        Current route: {location.pathname}
       </Typography>
     );
   }
