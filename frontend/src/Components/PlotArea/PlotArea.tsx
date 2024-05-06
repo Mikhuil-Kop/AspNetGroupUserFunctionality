@@ -1,6 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import "./PlotArea.css";
-import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../..";
 import { plotTypeActions } from "../../Redux/plotType/plotTypeActions";
 import { plotTypes } from "../../Redux/plotType/plotTypeConstants";
