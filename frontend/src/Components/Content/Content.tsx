@@ -63,8 +63,8 @@ const Content = (props: ContentProps) => {
             return (
                 <div className="home__page">
                     <span className="intro">
-                        Проект группы курса C# ASP.NET Core разработчик <br />
-                        <a href="https://otus.ru/lessons/asp-net/" style={{color: 'inherit'}}>OTUS</a>
+                        Проект группы курса <br />
+                        <a href="https://otus.ru/lessons/asp-net/" style={{color: 'inherit'}}>OTUS C# ASP.NET Core разработчик</a>
                     </span>
                     <Stack direction="row" spacing={{ xs: 1, sm: 2 }} useFlexGap flexWrap="wrap">
                         {authors.map((person) => {
